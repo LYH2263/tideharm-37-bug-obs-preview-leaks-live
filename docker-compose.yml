@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8800:8800"
+    volumes:
+      - tide_data:/data
+    environment:
+      DATA_DIR: /data
+  frontend:
+    build: ./frontend
+    ports:
+      - "3800:80"
+    depends_on:
+      - backend
+volumes:
+  tide_data:
